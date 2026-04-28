@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GK Quiz Challenge - Brain Games</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <main class="quiz-container">
+        <!-- Header with stats -->
+        <header class="quiz-header">
+            <div class="stat-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stat-icon"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                <span id="score-display">Score: 0</span>
+            </div>
+            
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <select id="language-select" class="language-select">
+                    <option value="en">English (Dynamic API)</option>
+                    <option value="ta" selected>தமிழ் (Static Data)</option>
+                </select>
+                <button id="btn-pause" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Pause</button>
+                <a href="index.html" class="btn btn-danger" style="padding: 0.5rem 1rem; font-size: 0.9rem; text-decoration: none;">Exit</a>
+            </div>
+
+            <div class="stat-box">
+                <span id="question-tracker">Q: 1/10</span>
+            </div>
+        </header>
+
+        <!-- Timer -->
+        <div class="timer-container">
+            <div id="timer-bar" class="timer-bar"></div>
+        </div>
+
+        <!-- Question Area -->
+        <div class="question-box" id="question-box">
+            <h2 id="question-text" class="question-text">Loading question...</h2>
+        </div>
+
+        <!-- Options Grid -->
+        <div class="options-grid" id="options-container">
+            <button class="option-btn" data-index="0">Option 1</button>
+            <button class="option-btn" data-index="1">Option 2</button>
+            <button class="option-btn" data-index="2">Option 3</button>
+            <button class="option-btn" data-index="3">Option 4</button>
+        </div>
+    </main>
+
+    <!-- Game Over Modal -->
+    <div class="modal-overlay" id="game-over-modal">
+        <div class="modal-content">
+            <h2>Time's Up!</h2>
+            <p>Your brain power score is</p>
+            <div class="final-score" id="final-score-display">0</div>
+            <p id="feedback-message">Great effort! Can you beat it?</p>
+            
+            <div class="modal-buttons">
+                <a href="memory.html" id="btn-next-game" class="btn btn-primary hidden">Next Game: Memory Matrix</a>
+                <button id="btn-play-again" class="btn btn-secondary">Play Again</button>
+                <a href="index.html" class="btn btn-secondary">Back to Menu</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+</html>

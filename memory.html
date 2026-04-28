@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Matrix - Brain Games</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Specific styles for Memory Matrix */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            perspective: 1000px;
+        }
+
+        .memory-card {
+            width: 100%;
+            aspect-ratio: 1;
+            background-color: transparent;
+            cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+
+        .memory-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .memory-card.matched {
+            transform: rotateY(180deg) scale(0.95);
+            opacity: 1;
+            cursor: default;
+            box-shadow: 0 0 15px var(--secondary-glow);
+            border: 2px solid var(--secondary);
+            border-radius: var(--radius-md);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+        }
+
+        .card-front {
+            background: var(--bg-surface);
+            color: var(--primary);
+        }
+        
+        .card-front::after {
+            content: '?';
+            font-size: 2.5rem;
+            font-weight: 800;
+            opacity: 0.5;
+        }
+
+        .card-back {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(52, 211, 153, 0.2));
+            transform: rotateY(180deg);
+            border-color: var(--primary);
+        }
+
+        @media (max-width: 500px) {
+            .memory-grid {
+                gap: 0.5rem;
+            }
+            .card-front, .card-back {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <main class="quiz-container">
+        <!-- Header -->
+        <header class="quiz-header">
+            <div class="stat-box">
+                <span id="moves-tracker">Moves: 0</span>
+            </div>
+
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <button id="btn-pause" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Pause</button>
+                <a href="index.html" class="btn btn-danger" style="padding: 0.5rem 1rem; font-size: 0.9rem; text-decoration: none;">Exit</a>
+            </div>
+
+            <div class="stat-box">
+                <span id="matches-tracker">Matches: 0/8</span>
+            </div>
+        </header>
+
+        <!-- Game Area -->
+        <div class="question-box" style="padding: 2rem;">
+            <h2 class="question-text" style="margin-bottom: 1.5rem;">Find all matching pairs</h2>
+            <div class="memory-grid" id="memory-grid">
+                <!-- Cards injected via JS -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Game Over Modal -->
+    <div class="modal-overlay" id="game-over-modal">
+        <div class="modal-content">
+            <h2>Matrix Solved!</h2>
+            <p>You completed the grid in</p>
+            <div class="final-score" id="final-moves-display">0</div>
+            <p>moves.</p>
+            
+            <div class="modal-buttons" style="margin-top: 1.5rem;">
+                <a href="math.html" id="btn-next-game" class="btn btn-primary">Next Game: Math Sprint</a>
+                <button id="btn-play-again" class="btn btn-secondary">Play Again</button>
+                <a href="index.html" class="btn btn-secondary">Back to Menu</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/memory.js"></script>
+</body>
+</html>

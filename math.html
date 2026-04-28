@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Sprint - Brain Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .math-question {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--primary);
+            text-shadow: 0 0 20px var(--primary-glow);
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <main class="quiz-container">
+        <!-- Header -->
+        <header class="quiz-header">
+            <div class="stat-box">
+                <span id="score-display">Score: 0</span>
+            </div>
+            
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <button id="btn-pause" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Pause</button>
+                <a href="index.html" class="btn btn-danger" style="padding: 0.5rem 1rem; font-size: 0.9rem; text-decoration: none;">Exit</a>
+            </div>
+
+            <div class="stat-box">
+                <span id="question-tracker">Q: 1/10</span>
+            </div>
+        </header>
+
+        <!-- Timer -->
+        <div class="timer-container">
+            <div id="timer-bar" class="timer-bar"></div>
+        </div>
+
+        <!-- Question Area -->
+        <div class="question-box" id="question-box">
+            <h2 class="question-text" style="font-size: 1.2rem; color: var(--text-muted);">Solve fast:</h2>
+            <div class="math-question" id="math-question">Loading...</div>
+        </div>
+
+        <!-- Options Grid -->
+        <div class="options-grid" id="options-container">
+            <button class="option-btn" data-index="0">0</button>
+            <button class="option-btn" data-index="1">0</button>
+            <button class="option-btn" data-index="2">0</button>
+            <button class="option-btn" data-index="3">0</button>
+        </div>
+    </main>
+
+    <!-- Game Over Modal -->
+    <div class="modal-overlay" id="game-over-modal">
+        <div class="modal-content">
+            <h2>Sprint Finished!</h2>
+            <p>Your math score is</p>
+            <div class="final-score" id="final-score-display">0</div>
+            <p id="feedback-message">Great effort!</p>
+            
+            <div class="modal-buttons" style="margin-top: 2rem;">
+                <button id="btn-restart-journey" class="btn btn-primary" style="background: linear-gradient(135deg, var(--secondary), #059669);">Loop Back to Start</button>
+                <button id="btn-play-again" class="btn btn-secondary">Play Sprint Again</button>
+                <a href="index.html" class="btn btn-secondary">Back to Menu</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/math.js"></script>
+</body>
+</html>
