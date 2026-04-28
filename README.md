@@ -48,4 +48,5 @@ Since this is a client-side static web application, no complex build tools or se
 *   **Open Trivia Database API** - Used for dynamic English trivia questions.
 
 ---
-*Created with ❤️ by Janani Parul*
+*Created with ❤️ by Jaan
+
